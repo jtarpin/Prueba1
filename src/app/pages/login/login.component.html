@@ -1,0 +1,118 @@
+<!-- <div class="layoutMain">
+
+
+    <div>
+
+        <div class="flex sm:justify-start">
+            <h3 class="font-bold text-3xl">Iniciar sesion</h3>
+        </div>
+
+
+        <form autocomplete="off" class="mt-4" [formGroup]="formLogin">
+
+            <div>
+                <label>Email</label>
+                <input
+                    class="inputStyle mt-1 w-80 sm:w-[27.5rem] transition-propia"
+                    type="text"
+                    formControlName="email"
+                    required
+                />
+            </div>
+
+            <div class="mt-6">
+                <label>Contraseña</label>
+                <input
+                    class="inputStyle mt-1 w-full sm:w-[27.5rem] transition-propia"
+                    type="password"
+                    formControlName="password"
+                    required
+                />
+            </div>
+
+
+            <div class="mt-6">
+                <button
+                    mat-raised-button
+                    (click)="enviarDatos()"
+                    type="submit"
+                    class="w-full h-10 rounded-lg text-white transition-propia">
+                    Crear cuenta
+                </button>
+            </div>
+
+        </form>
+
+
+    </div>
+
+
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex justify-center mt-6">
+
+
+    <div>
+
+        <div class="flex sm:justify-start">
+            <h3 class="font-bold text-3xl text-white">Iniciar Sesión</h3>
+        </div>
+
+
+        <form [formGroup]="formLogin" autocomplete="off" class="mt-4">
+
+
+            <div class="mt-6">
+                <label class="text-white">Email</label>
+                <input
+                    class="inputStyle mt-1 w-full sm:w-[27.5rem] transition-propia text-white"
+                    type="text"
+                    formControlName="email"
+                    required
+                />
+            </div>
+
+
+
+            <div class="mt-6">
+                <label class="text-white">Contraseña</label>
+                <input
+                    class="inputStyle mt-1 w-full sm:w-[27.5rem] transition-propia text-white"
+                    type="password"
+                    formControlName="password"
+                    required
+                />
+            </div>
+
+
+            <div class="mt-6">
+                <button
+                    class="w-full h-10 rounded-lg text-black text-xl transition-propia"
+                    [ngClass]="{'bg-[#ffffff]': formLogin.valid, 'bg-[#808080]': !formLogin.valid}"
+                    (click)="enviarDatos()"
+                    [disabled]="!formLogin.valid">
+                    Iniciar Sesion
+                </button>
+            </div>
+
+        </form>
+
+
+    </div>
+
+
+</div>

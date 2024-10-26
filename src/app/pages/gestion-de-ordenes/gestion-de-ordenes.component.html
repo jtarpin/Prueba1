@@ -1,0 +1,205 @@
+ <main>
+  <section class="grid-container">
+
+    <div class="card" (click)="mostrarStepperHandler()">Crear Orden</div>
+    <div class="card">Ver Ordenes</div>
+
+  </section>
+</main>
+
+
+
+
+
+<mat-stepper *ngIf="mostrarStepper" #stepper>
+
+
+  <mat-step *ngIf="mostrarStepper">
+    <form>
+      <ng-template matStepLabel>Tipo de Activo</ng-template>
+      <h4 class="mt-4 mb-4">Seleccione el tipo de activo</h4>
+      <mat-form-field>
+        <mat-label>Activo</mat-label>
+        <mat-select>
+          <app-asset-type (tiposDeActivoChange)="onTiposDeActivoChange($event)"></app-asset-type>
+          <mat-option *ngFor="let tipo of tiposDeActivo" [value]="tipo.id_asset_type">
+            {{ tipo.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+
+
+
+  <mat-step>
+    <form>
+      <ng-template matStepLabel>Edificio</ng-template>
+
+      <h4 class="mt-4 mb-4">Seleccione el Edificio</h4>
+
+      <mat-form-field>
+        <mat-label>Edificio</mat-label>
+        <mat-select>
+          <app-edifice (EdificesChange)="onEdificesChange($event)"></app-edifice>
+          <mat-option *ngFor="let tipo of Edifices" [value]="tipo.id_edifice">
+            {{ tipo.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+    </form>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+      <button mat-button matStepperPrevious>Back</button>
+    </div>
+  </mat-step>
+
+
+
+
+  <mat-step>
+    <form>
+      <ng-template matStepLabel>Piso</ng-template>
+
+      <h4 class="mt-4 mb-4">Seleccione el Piso</h4>
+
+      <mat-form-field>
+        <mat-label>Piso</mat-label>
+        <mat-select>
+          <app-floor (PisosChange)="onPisosChange($event)"></app-floor>
+          <mat-option *ngFor="let tipo of Floor" [value]="tipo.id_floor">
+            {{ tipo.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </form>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+      <button mat-button matStepperPrevious>Back</button>
+    </div>
+  </mat-step>
+
+
+
+
+  <mat-step>
+    <form>
+      <ng-template matStepLabel>Sector</ng-template>
+
+      <h4 class="mt-4 mb-4">Seleccione el Sector</h4>
+
+      <mat-form-field>
+        <mat-label>Sector</mat-label>
+        <mat-select>
+          <app-sector (SectorChange)="onSectorChange($event)"></app-sector>
+          <mat-option *ngFor="let tipo of Sector" [value]="tipo.id_sector">
+            {{ tipo.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </form>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+      <button mat-button matStepperPrevious>Back</button>
+    </div>
+  </mat-step>
+
+
+
+  <mat-step>
+    <form>
+      <ng-template matStepLabel>Ubicacion</ng-template>
+
+      <h4 class="mt-4 mb-4">Seleccione la Ubicacion</h4>
+
+      <mat-form-field>
+        <mat-label>Ubicacion</mat-label>
+        <mat-select>
+          <app-site (SiteChange)="onSiteChange($event)"></app-site>
+          <mat-option *ngFor="let tipo of Site" [value]="tipo.id_site">
+            {{ tipo.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </form>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+      <button mat-button matStepperPrevious>Back</button>
+    </div>
+  </mat-step>
+
+
+
+
+  <mat-step>
+    <form>
+      <ng-template matStepLabel>Tipo de Tarea</ng-template>
+
+      <h4 class="mt-4 mb-4">Seleccione el tipo de tarea</h4>
+
+      <mat-form-field>
+        <mat-label>Tarea</mat-label>
+        <mat-select>
+          <app-task-type (TaskTypeChange)="onTaskTypeChange($event)"></app-task-type>
+          <mat-option *ngFor="let tipo of TaskType" [value]="tipo.id_task_type">
+            {{ tipo.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+    </form>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+      <button mat-button matStepperPrevious>Back</button>
+    </div>
+  </mat-step>
+
+
+  <mat-step>
+    <form>
+      <ng-template matStepLabel>Operario</ng-template>
+
+      <h4 class="mt-4 mb-4">Seleccione el Operario</h4>
+
+      <mat-form-field>
+        <mat-label>Operario</mat-label>
+        <mat-select>
+          <app-user (UserChange)="onUserChange($event)"></app-user>
+          <mat-option *ngFor="let tipo of User" [value]="tipo.id_user">
+            {{ tipo.username }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+    </form>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+      <button mat-button matStepperPrevious>Back</button>
+    </div>
+  </mat-step>
+
+
+
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+
+
+
+
+</mat-stepper>
